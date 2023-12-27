@@ -21,6 +21,14 @@ RUN OVERMIND_VERSION=$(curl -s https://api.github.com/repos/DarthSim/overmind/re
 RUN curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb \
     && dpkg -i cloudflared.deb
 
+# Download and extract Prometheus
+RUN PROMETHEUS_VERSION=$(curl -s https://api.github.com/repos/prometheus/prometheus/releases/latest | jq -r '.tag_name') \
+    && echo "$PROMETHEUS_VERSION" \
+    && wget -O prometheus.tar.gz "https://github.com/prometheus/prometheus/releases/download/$PROMETHEUS_VERSION/prometheus-${PROMETHEUS_VERSION}.linux-amd64.tar.gz" \
+    && tar xvfz prometheus.tar.gz \
+    && mv prometheus-${PROMETHEUS_VERSION}.linux-amd64 /prometheus
+    && rm -rf prometheus-${PROMETHEUS_VERSION}.linux-amd64 prometheus.tar.gz
+
 # Delete downloaded archives
 RUN rm -rf overmind.gunzip cloudflared.deb
     
@@ -35,6 +43,10 @@ ENV TINI_SUBREAPER yes \
 # Copy the entrypoint script into the image
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+
+#Make Prometheus executable
+RUN chmod +x /prometheus/prometheus
+COPY prometheus.yml /prometheus/prometheus.yml
 
 # Set the entrypoint script as the entrypoint for the container
 ENTRYPOINT ["/entrypoint.sh"]
