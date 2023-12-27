@@ -20,7 +20,7 @@ metrics:
     scrape_configs:
       - job_name: cloudflare-tunnel
         static_configs:
-        - targets: ['0.0.0.0:9191']
+        - targets: ['0.0.0.0:9091']
     remote_write:
       - url: $GRAFANA_URL
         basic_auth:
