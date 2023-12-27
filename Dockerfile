@@ -41,9 +41,6 @@ ENV TINI_SUBREAPER yes \
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-#Make Prometheus executable
-RUN chmod +x ./prometheus/prometheus
-
 # Set the entrypoint script as the entrypoint for the container
 ENTRYPOINT ["/entrypoint.sh"]
 
