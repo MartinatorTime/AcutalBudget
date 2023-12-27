@@ -9,4 +9,4 @@ primary_region = "arn"
 
 [metrics]
   port = 8080
-  path = “/metrics”
+  path = "/metrics"
