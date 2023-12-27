@@ -6,7 +6,3 @@ primary_region = "arn"
 [[mounts]]
   source = "actual_data"
   destination = "/data"
-
-[metrics]
-port = 9091
-path = "/metrics" # default for most prometheus exporters
