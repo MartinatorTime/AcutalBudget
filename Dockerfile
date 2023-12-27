@@ -22,19 +22,15 @@ RUN curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/r
     && dpkg -i cloudflared.deb
 
 # Download and extract Prometheus
-RUN PROMETHEUS_VERSION=$(curl -s https://api.github.com/repos/prometheus/prometheus/releases/latest | jq -r '.tag_name') \
-    && echo "$PROMETHEUS_VERSION" \
-    && wget -O prometheus.tar.gz "https://github.com/prometheus/prometheus/releases/download/$PROMETHEUS_VERSION/prometheus-${PROMETHEUS_VERSION#v}.linux-amd64.tar.gz" \
-    && tar xvfz prometheus.tar.gz \
-    && mv prometheus-${PROMETHEUS_VERSION#v}.linux-amd64 ./prometheus/ \
-    && rm -rf prometheus-${PROMETHEUS_VERSION#v}.linux-amd64 prometheus.tar.gz
+RUN curl -O -L "https://github.com/grafana/agent/releases/latest/download/grafana-agent-linux-amd64.zip" \
+    && unzip "grafana-agent-linux-amd64.zip" \
+    && chmod a+x grafana-agent-linux-amd64
 
 # Delete downloaded archives
 RUN rm -rf overmind.gunzip cloudflared.deb
     
 # Copy files to docker
 COPY Procfile .
-COPY prometheus.yml .
 
 # Set some envs
 ENV TINI_SUBREAPER yes \
