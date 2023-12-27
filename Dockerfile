@@ -34,6 +34,7 @@ RUN rm -rf overmind.gunzip cloudflared.deb
     
 # Copy files to docker
 COPY Procfile .
+COPY prometheus.yml .
 
 # Set some envs
 ENV TINI_SUBREAPER yes \
@@ -46,7 +47,6 @@ RUN chmod +x /entrypoint.sh
 
 #Make Prometheus executable
 RUN chmod +x ./prometheus/prometheus
-COPY prometheus.yml ./prometheus/prometheus.yml
 
 # Set the entrypoint script as the entrypoint for the container
 ENTRYPOINT ["/entrypoint.sh"]
