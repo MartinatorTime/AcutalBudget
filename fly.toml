@@ -9,4 +9,3 @@ primary_region = "arn"
 
 [metrics]
 port = 9091
-path = "/metrics" # default for most prometheus exporters
