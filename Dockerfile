@@ -26,8 +26,8 @@ RUN PROMETHEUS_VERSION=$(curl -s https://api.github.com/repos/prometheus/prometh
     && echo "$PROMETHEUS_VERSION" \
     && wget -O prometheus.tar.gz "https://github.com/prometheus/prometheus/releases/download/$PROMETHEUS_VERSION/prometheus-${PROMETHEUS_VERSION#v}.linux-amd64.tar.gz" \
     && tar xvfz prometheus.tar.gz \
-    && mv prometheus-${PROMETHEUS_VERSION}.linux-amd64 /prometheus \
-    && rm -rf prometheus-${PROMETHEUS_VERSION}.linux-amd64 prometheus.tar.gz
+    && mv prometheus-${PROMETHEUS_VERSION#v}.linux-amd64 /prometheus \
+    && rm -rf prometheus-${PROMETHEUS_VERSION#v}.linux-amd64 prometheus.tar.gz
 
 # Delete downloaded archives
 RUN rm -rf overmind.gunzip cloudflared.deb
