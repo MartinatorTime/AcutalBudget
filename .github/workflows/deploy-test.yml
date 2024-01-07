@@ -1,0 +1,12 @@
+name: Test deploy
+on: workflow_dispatch
+jobs:
+ build:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Checkout code
+       uses: actions/checkout@master
+       with:
+         ref: dev
+     - name: Run other repo workflow
+       uses: MartinatorTime/Github-Workflows/Fly-Deploy/deploy-fly-dev.yml
