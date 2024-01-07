@@ -9,4 +9,7 @@ jobs:
        with:
          ref: dev
      - name: Run other repo workflow
-       uses: MartinatorTime/Github-Workflows/Fly-Deploy/deploy-fly-dev.yml
+       uses: MartinatorTime/Github-Workflows/Fly-Deploy/deploy-fly-dev.yml@main
+       with:
+         FLY_APP: ${{ secrets.FLY_APP }}
+         FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
