@@ -3,7 +3,7 @@ FROM actualbudget/actual-server:latest
 ENV PORT=8080
 
 VOLUME /data
-
+USER root
 # Install runtime dependencies
 RUN apt-get update && \
     apt-get install -y sqlite3 libpq5 wget curl tar lsof jq gpg ca-certificates openssl tmux procps unzip && \
@@ -36,8 +36,12 @@ ENV TINI_SUBREAPER yes \
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+# Copy the entrypoint script into the image
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 # Set the entrypoint script as the entrypoint for the container
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 
 # Start Overmind
 CMD ["overmind", "start"]
