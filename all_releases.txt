@@ -1,2 +1,2 @@
-cloudflare/cloudflared: 2024.2.0
+cloudflare/cloudflared: 2024.2.1
 DarthSim/overmind: v2.4.0
