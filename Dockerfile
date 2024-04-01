@@ -1,4 +1,4 @@
-FROM actualbudget/actual-server:edge
+FROM actualbudget/actual-server:latest
 
 ENV PORT=8080 \
     LOG_FILE=/data/actual.log \
