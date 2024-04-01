@@ -1,7 +1,8 @@
 FROM actualbudget/actual-server:edge
 
 ENV PORT=8080 \
-    LOG_FILE=/data/actual.log
+    LOG_FILE=/data/actual.log \
+    DOMAIN=https://martinatorbudget.fly.dev
 
 VOLUME /data
 USER root
@@ -43,6 +44,7 @@ COPY config/Caddyfile /etc/caddy/Caddyfile
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+EXPOSE 8080
 # Set the entrypoint script as the entrypoint for the container
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 
