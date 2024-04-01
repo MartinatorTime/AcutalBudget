@@ -30,7 +30,7 @@ RUN CADDY_VERSION=$(wget -qO- https://api.github.com/repos/caddyserver/caddy/rel
 RUN rm -rf overmind.gunzip cloudflared.deb
     
 # Copy files to docker
-COPY config/Procfile /Procfile
+COPY config/Procfile ./Procfile
 COPY config/Caddyfile /etc/caddy/Caddyfile
 
 # Set some envs
