@@ -25,6 +25,7 @@ jobs:
           #Set New Secrets
           flyctl secrets set CF_TOKEN="${{ secrets.CF_TOKEN }}" --stage
           flyctl deploy --now --no-public-ips -a $FLY_APP --no-cache --local-only
+          #flyctl deploy --now --no-public-ips -a $FLY_APP --no-cache --local-only
         env:
           FLY_APP: ${{ secrets.FLY_APP }}
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
