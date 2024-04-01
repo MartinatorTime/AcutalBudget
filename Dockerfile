@@ -1,6 +1,7 @@
 FROM actualbudget/actual-server:latest
 
-ENV PORT=8080
+ENV PORT=8080 \
+    LOG_FILE=/data/actual.log
 
 VOLUME /data
 USER root
