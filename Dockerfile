@@ -36,9 +36,9 @@ COPY config/Procfile ./Procfile
 COPY config/Caddyfile /etc/caddy/Caddyfile
 
 # Set some envs
-#ENV TINI_SUBREAPER yes \
-#    OVERMIND_AUTO_RESTART=all \
-#    OVERMIND_DAEMONIZE=1
+ENV TINI_SUBREAPER yes \
+    OVERMIND_AUTO_RESTART=all \
+    OVERMIND_DAEMONIZE=1
 
 # Copy the entrypoint script into the image
 COPY entrypoint.sh /entrypoint.sh
