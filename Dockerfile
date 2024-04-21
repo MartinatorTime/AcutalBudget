@@ -2,7 +2,7 @@ FROM actualbudget/actual-server:latest
 
 ENV PORT=8080 \
     LOG_FILE=/data/actual.log \
-    DOMAIN=https://martinatorbudget.fly.dev
+    DOMAIN=https://budget.martinatortime.us.to
 
 VOLUME /data
 USER root

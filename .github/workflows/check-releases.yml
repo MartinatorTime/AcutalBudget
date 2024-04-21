@@ -25,7 +25,7 @@ jobs:
       - name: Check for New Releases
         id: check-releases
         run: |
-          REPOS="actualbudget/actual-server cloudflare/cloudflared DarthSim/overmind"
+          REPOS="actualbudget/actual-server cloudflare/cloudflared DarthSim/overmind caddyserver/caddy"
           RELEASES_FOUND=false # Assume no releases found initially
 
           for REPO in $REPOS; do
