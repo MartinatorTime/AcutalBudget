@@ -1,0 +1,3 @@
+cloudflare/cloudflared: 2024.10.0
+DarthSim/overmind: v2.5.1
+caddyserver/caddy: v2.8.4
